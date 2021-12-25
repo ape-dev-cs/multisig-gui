@@ -22,7 +22,7 @@ function App() {
     <Web3ReactProvider getLibrary={getLibrary}>
       <ThemeProvider theme={theme}>
         <ToastContainer />
-        <BrowserRouter>
+        <BrowserRouter basename={'/multisig-gui'}>
           <Header />
           <Routes>
             <Route path="/" element={<HomePage />} />
