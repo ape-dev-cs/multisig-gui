@@ -12,7 +12,6 @@ import { API_URL } from '../config/config';
 import { useEagerConnect } from '../hooks/useEagerConnect';
 import { useEns } from '../hooks/useEns';
 import { useInactiveListener } from '../hooks/useInactiveListener';
-import { UserProfile } from '../hooks/useProfile';
 import { MAX_CONTENT_WIDTH_PX } from '../styles/theme';
 import { getShortenedAddress } from '../utils/address';
 import { immer } from '../utils/zustand';
@@ -130,7 +129,6 @@ const Header: React.FC<HeaderProps> = () => {
   const hasTriedEagerConnect = useEagerConnect();
 
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [loggedInProfile, setLoggedInProfile] = useState<Partial<UserProfile>>();
 
   useEffect(() => {
     setHasTriedEagerConnecting(hasTriedEagerConnect);
@@ -216,7 +214,7 @@ const Header: React.FC<HeaderProps> = () => {
                     <StyledSpan style={{ marginRight: 16 }}>
                       {userEnsName ?? getShortenedAddress(account, 6, 4)}
                     </StyledSpan>
-                    <AvatarComponent address={account} url={loggedInProfile?.profilePicture} />
+                    <AvatarComponent address={account} />
                   </RightWrapper>
                 </>
               )}

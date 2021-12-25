@@ -56,7 +56,7 @@ const ContractPage = () => {
   }, [multisig, blockNumber]);
 
   useEffect(() => {
-    if (account && library) {
+    if (account && library && contract) {
       setMultisig(Multisig__factory.connect(contract, library.getSigner(account)));
     }
   }, [account, library, contract]);
@@ -70,10 +70,12 @@ const ContractPage = () => {
   }, [library]);
 
   const makeProposal = async () => {
-    const result = await multisig.propose(proposal.to, ethers.utils.parseEther(proposal.value), proposal.bytecode);
-    toast.info('Awaiting TX confirmation...');
-    await result.wait();
-    toast.success('Proposal created!');
+    if (multisig) {
+      const result = await multisig.propose(proposal.to, ethers.utils.parseEther(proposal.value), proposal.bytecode);
+      toast.info('Awaiting TX confirmation...');
+      await result.wait();
+      toast.success('Proposal created!');
+    }
   };
 
   const isProposalEntered = () => {

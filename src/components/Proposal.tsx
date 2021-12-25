@@ -52,6 +52,9 @@ export const Proposal: React.FC<ProposalProps> = (props) => {
   }, [library]);
 
   const signOrExceute = async () => {
+    if (!proposal) {
+      return;
+    }
     if (proposal.sigs.toNumber() >= props.sigsRequired) {
       const result = await props.multisig.execute(props.proposalNumber);
       toast.info('Awaiting TX confirmation...');
