@@ -39,7 +39,7 @@ const HomePage = () => {
               <StepLabel>Deploy a new multisig</StepLabel>
               <PrimaryButton
                 onPress={() => {
-                  navigate('/deploy');
+                  navigate('/multisig-gui/deploy');
                 }}
                 style={{
                   maxWidth: '180px',
@@ -59,7 +59,7 @@ const HomePage = () => {
               </div>
 
               <PrimaryButton
-                onPress={() => navigate(`/multisig/${contract}`)}
+                onPress={() => navigate(`/multisig-gui/multisig/${contract}`)}
                 style={{ marginBottom: '16px', maxWidth: '180px' }}
               >
                 Use

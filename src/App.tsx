@@ -1,6 +1,6 @@
 import { Web3Provider } from '@ethersproject/providers';
 import { Web3ReactProvider } from '@web3-react/core';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
 
@@ -22,15 +22,15 @@ function App() {
     <Web3ReactProvider getLibrary={getLibrary}>
       <ThemeProvider theme={theme}>
         <ToastContainer />
-        <BrowserRouter basename={'/multisig-gui'}>
+        <HashRouter>
           <Header />
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/deploy" element={<DeployPage />} />
-            <Route path="/multisig/:contract" element={<ContractPage />} />
+            <Route path="/multisig-gui/" element={<HomePage />} />
+            <Route path="/multisig-gui/deploy" element={<DeployPage />} />
+            <Route path="/multisig-gui/multisig/:contract" element={<ContractPage />} />
             <Route index element={<HomePage />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </ThemeProvider>
     </Web3ReactProvider>
   );

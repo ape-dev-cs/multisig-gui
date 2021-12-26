@@ -31,7 +31,7 @@ const DeployPage = () => {
       toast.info('Awaiting TX confirmation...');
       await result.deployed();
       toast.success('Multisig created!');
-      navigate(`/multisig/${result.address}`);
+      navigate(`/multisig-gui/multisig/${result.address}`);
     } else {
       toast.error('Something went wrong');
     }
